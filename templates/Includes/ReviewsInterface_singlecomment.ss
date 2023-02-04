@@ -15,9 +15,13 @@
 	<p class="coments-ratings">{$RatingStars} {$ExcessStars}</p>
 	<p>$EscapedComment</p>
 </div>
-
+<% if $UpdateForm %>
+<div class="comment-update-form-holder">
+  $UpdateForm
+</div>
+<% end_if %>
 <% if not $isPreview %>
-	<% if $ApproveLink || $SpamLink || $HamLink || $DeleteLink || $RepliesEnabled %>
+	<% if $ApproveLink || $SpamLink || $HamLink || $DeleteLink || $UpdateForm || $RepliesEnabled %>
 		<div class="comment-action-links">
 			<div class="comment-moderation-options">
 				<% if $ApproveLink %>
@@ -31,6 +35,11 @@
 				<% end_if %>
 				<% if $DeleteLink %>
 					<a href="$DeleteLink.ATT" class="delete"><% _t('CommentsInterface_singlecomment_ss.REMCOM','reject it') %></a>
+				<% end_if %>
+			</div>
+			<div class="comment-author-options">
+				<% if $UpdateForm %>
+					<button class="comment-update-link" aria-controls="$UpdateForm.FormName" aria-expanded="false"><%t CommentsInterface_singlecomment_ss.UPDCOM "Update it" %></button>
 				<% end_if %>
 			</div>
 			<% if $RepliesEnabled && $canPostComment %>

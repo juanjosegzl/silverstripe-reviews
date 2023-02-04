@@ -4,14 +4,12 @@
         color: #D9D500;
     }
 
-    #CommentForm_CommentsForm_Rating_Holder {
-        ul {
-            padding-left: 0;
+    ul.rating-holder-container {
+        padding-left: 0;
 
-            li {
-                display: inline-block;
-                list-style: none;
-            }
+        li {
+            display: inline-block;
+            list-style: none;
         }
     }
 }
