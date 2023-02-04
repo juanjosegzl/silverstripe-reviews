@@ -5,6 +5,7 @@ namespace ilateral\SilverStripe\Reviews\Extensions;
 use SilverStripe\ORM\DataExtension;
 use ilateral\SilverStripe\Reviews\Helpers\ReviewHelper;
 use SilverStripe\Forms\FieldList;
+use ilateral\SilverStripe\Reviews\Control\ReviewsController;
 
 class CommentExtension extends DataExtension
 {
@@ -69,5 +70,9 @@ class CommentExtension extends DataExtension
             'Name',
             $owner->dbObject('Rating')->scaffoldFormField($owner->fieldLabel('Rating'))
         );
+    }
+
+    public function updateController() {
+        return ReviewsController::create();
     }
 }

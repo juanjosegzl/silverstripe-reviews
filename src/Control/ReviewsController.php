@@ -55,7 +55,7 @@ class ReviewsController extends CommentingController
         $max = $this->getOption('max_rating');
         $id = $this->getRequest()->postVar('ParentID');
         $class = $this->getRequest()->postVar('ParentClassName');
-        
+
         // If we dont have exact values, look to see if we are using a post
         if ((empty($min) || empty($max)) && $id && $class) {
             if ($object = $class::get()->byID($id)) {
@@ -89,6 +89,7 @@ class ReviewsController extends CommentingController
                 $ratings
             )->setCustomValidationMessage($required_text)
             ->setAttribute('data-msg-required', $required_text)
+            ->addExtraClass('rating-holder-container')
         );
 
         // Website URL is possibly overkill for a review, disable unless we overwrite this
